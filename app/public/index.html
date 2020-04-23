@@ -28,6 +28,25 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="%PUBLIC_URL%/wasm_exec.js"></script>
+    <script>
+      if (!WebAssembly.instantiateStreaming) { // polyfill
+        WebAssembly.instantiateStreaming = async (resp, importObject) => {
+          const source = await (await resp).arrayBuffer();
+          return await WebAssembly.instantiate(source, importObject);
+        };
+      }
+
+      const go = new Go();
+      let mod, inst;
+      WebAssembly.instantiateStreaming(fetch("qrcode.wasm"), go.importObject).then((result) => {
+        mod = result.module;
+        inst = result.instance;
+        go.run(inst);
+      }).catch((err) => {
+        console.error(err);
+      });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
