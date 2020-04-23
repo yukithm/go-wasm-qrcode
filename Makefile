@@ -20,7 +20,7 @@ build-app: build-wasm
 .PHONY: clean
 clean:
 	rm "$(PUBLIC_DIR)/$(QRCODE_WASM)"
-	cd "$(WASM_DIR)" && $(MAKE) clean
+	rm -r "$(APP_DIR)/build"
 
 .PHONY: run
 run: build-wasm
