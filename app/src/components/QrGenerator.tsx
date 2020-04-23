@@ -1,7 +1,7 @@
+import { Box, Container } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import React, { useCallback, useState } from "react";
 import EncodedImageData from "../types/EncodedImageData";
-import ErrorMessage from "./ErrorMessage";
-import "./QrGenerator.css";
 import QrImageView from "./QrImageView";
 import QrTextForm from "./QrTextForm";
 
@@ -25,7 +25,7 @@ const QrGenerator: React.FC<Props> = (props) => {
         (content: string) => {
             clearState();
             if (content === "") {
-                setErrorMessage("Empty text");
+                setErrorMessage("Please input text.");
                 return;
             }
 
@@ -46,11 +46,13 @@ const QrGenerator: React.FC<Props> = (props) => {
     );
 
     return (
-        <div className="QrGenerator">
+        <Container maxWidth="sm">
             <QrTextForm onSubmit={onSubmit} />
-            <ErrorMessage message={errorMessage} />
+            <Box margin="0.5em 0">
+                {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+            </Box>
             <QrImageView imageData={imageData} />
-        </div>
+        </Container>
     );
 };
 
