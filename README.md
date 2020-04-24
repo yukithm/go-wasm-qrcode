@@ -45,20 +45,42 @@ and UNIX like shell environment which can use `make` and some commands used in `
 make run
 ```
 
-### Windows
+### Windows (PowerShell)
 
 ```sh
-# build wams
+# build wasm
+cd wasm
+$Env:GOOS = "js"
+$Env:GOARCH = "wasm"
+go build -o qrcode.wasm
+
+# copy .wasm into app's assets directory
+cp qrcode.wasm ../app/public
+
+# go to app dir
+cd ../app
+
+# install dependencies
+yarn
+
+# run
+yarn start
+```
+
+### Windows (cmd.exe)
+
+```sh
+# build wasm
 cd wasm
 set GOOS=js
 set GOARCH=wasm
 go build -o qrcode.wasm
 
 # copy .wasm into app's assets directory
-copy qrcode.wasm ../app/public
+copy qrcode.wasm ..\app\public
 
 # go to app dir
-cd ../app
+cd ..\app
 
 # install dependencies
 yarn
@@ -90,7 +112,16 @@ or just use `go build`.
 GOOS=js GOARCH=wasm go build -o qrcode.wasm
 ```
 
-##### Windows
+##### Windows (PowerShell)
+
+```sh
+# build
+$Env:GOOS = "js"
+$Env:GOARCH = "wasm"
+go build -o qrcode.wasm
+```
+
+##### Windows (cmd.exe)
 
 ```sh
 # build
