@@ -13,6 +13,10 @@ Front-end app:
     - Create-React-App
     - Material-UI
 
+## TODO
+
+- Provides and use decralation file (`.d.ts`)
+
 ## Requirement
 
 - Go (>= 1.12)
