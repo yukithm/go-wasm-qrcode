@@ -19,7 +19,7 @@ Front-end app:
 
 ## Requirement
 
-- Go (>= 1.12)
+- Go (>= 1.16)
 - Node.js (>= 14.15.0)
 - Yarn 
 

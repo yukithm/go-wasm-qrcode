@@ -1,3 +1,3 @@
 module github.com/yukithm/go-wasm-qrcode
 
-go 1.14
+go 1.16
