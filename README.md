@@ -19,8 +19,8 @@ Front-end app:
 
 ## Requirement
 
-- Go (>= 1.12)
-- Node.js (and npm)
+- Go (>= 1.16)
+- Node.js (>= 14.15.0)
 - Yarn 
 
 and UNIX like shell environment which can use `make` and some commands used in `Makefile`.
